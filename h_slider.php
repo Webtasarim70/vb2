@@ -5,12 +5,6 @@
 
 
 <?php
-/**
- * Created by PhpStorm.
- * User: Win7
- * Date: 31.07.2018
- * Time: 16:19
- */
 
 $videolar=$db->prepare("SELECT * FROM  videolar WHERE video_durum=:v ORDER BY video_eklemetarihi DESC LIMIT 20 ");
 $videolar->execute(array(':v'=>1));
