@@ -46,31 +46,35 @@ function post($parametre, $kosul = false){
         return $ip;
     }
 
-         function kategori_listele($kategori_ust,$kategori_id=0,$onek = 0) {
-             //Alt Kategori çağıran fonksiyon başladı
-             global $db; //PDO veritabanı değişkenini fonksiyon içinde kullanabilmek için global yaptık. 
-         
-             $kategoriler = $db-> prepare ("select * from kategori where kategori_ust=:kategori_id order by kategori_ad asc");
-             $kategoriler -> execute (array("kategori_id"=>$kategori_id));
+         function kategori_listele($ana_kategori_id,$kategori_id=0,$onek = 0) {
+     //Alt Kategori çağıran fonksiyon başladı
+     global $db; //PDO veritabanı değişkenini fonksiyon içinde kullanabilmek için global yaptık. 
+ 
+     $kategoriler = $db -> prepare ("select * from kategori where ana_kategori_id=:kategori_id order by kategori_adi asc");
+     $kategoriler -> execute (array("kategori_id"=>$kategori_id));
+     while ($dizi = $kategoriler-> fetch (PDO::FETCH_ASSOC)) {
+           $ana_kategori_adi = $dizi ["kategori_adi"];
+           $kategori_id = $dizi ["kategori_id"]; 
+ 
+           if ($kategori_id==$ana_kategori_id) {
+                 $onay = 'selected';
+           } else {
+                 $onay = '';
+           }
+ 
+           $ekle=str_repeat('-', $onek);
+           echo "<option value='$kategori_id' $onay>$ekle $ana_kategori_adi</option>";
+ 
+           kategori_listele ($ana_kategori_id,$kategori_id,$onek+3);
+      }
+     //------------------------------------ 
+ 
+    }
 
-             while ($dizi = $kategoriler-> fetch (PDO::FETCH_ASSOC)) {
-                   $kategori_ust = $dizi ["kategori_adi"];
-                   $kategori_id = $dizi ["kategori_id"]; 
-         
-                   if ($kategori_id==$kategori_ust) {
-                         $onay = 'selected';
-                   } else {
-                         $onay = '';
-                   }
-         
-                   $ekle=str_repeat('-', $onek);
-                   echo "<option value='$kategori_id' $onay>$ekle $kategori_ust</option>";
-         
-                   kategori_listele ($kategori_ust,$kategori_id,$onek+3);
-              }
-             //------------------------------------ 
-         
-        }
+
+
+
+
 
 
 

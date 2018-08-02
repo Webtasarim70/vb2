@@ -199,12 +199,12 @@ require_once "ust.php"; ?>
                                     <div class="col-lg-2 control-label" for="inputEmail">Kategorisi</div>
                                      <div class="col-lg-12">
                                         
-                                     <select name="kategori_ust" id="kategori_ust>
-                                              <option value="0">Seç</option>
-                                               <?php
-                                                    kategori_listele()            
-                                               ?>
-                                    </select>
+                                      <select name="ana_kategori_id" id="ana_kategori_id">
+                                      <option value="0">Seç</option>
+                                       <?php
+                                            kategori_listele($ana_kategori_id)            
+                                       ?>
+                                      </select>
 
                                      </div>
                                 </div>
