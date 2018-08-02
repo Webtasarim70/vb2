@@ -57,8 +57,6 @@ require_once "ust.php"; ?>
 	  <div class="table-responsive">
 		<table class="table table-hover">
 
-
-
                 <thead>
                 <tr>
                     <th scope="col">#</th>
@@ -66,12 +64,13 @@ require_once "ust.php"; ?>
                     <th scope="col">Video Başlık</th>
                     <th scope="col">Video Url</th>
                     <th scope="col">Video Sahibi</th>
+                    <th scope="col">Kategori</th>
+                    <th scope="col">Üst Kat.</th>
                     <th scope="col">Durum</th>
                     <th scope="col">İşlemler</th>
 
                 </tr>
                 </thead>
-
 
                 <?php
 
@@ -86,6 +85,8 @@ require_once "ust.php"; ?>
 
                     <td><a target="_blank" data-toggle="tooltip" data-placement="top" title="Youtubede İzle" href="https://www.youtube.com/watch?v=<?php echo $row['video_url'] ?>"><?php echo $row['video_url'] ?></a></td>
                     <td><?php echo $row['video_sahibi'] ?></td>
+                    <td><?php echo $row['video_kat'] ?></td>
+                    <td><?php echo $row['video_ustkat'] ?></td>
                     <td>
 
 
@@ -97,13 +98,16 @@ require_once "ust.php"; ?>
                                 echo "<div style='color:red;font-weight:bold'><i class='fa fa-close' aria-hidden='true'></i> Onay Bekliyor</div>";
 
                             }
-
-
-
                         ?>
+                        <?php
+                            if ($row['video_tavsiye']==1){
+                                echo "<div style='color:red;font-weight:bold'><i class='fa fa-check' aria-hidden='true'></i> Öne çıkarılmış</div>";
 
+                            }else {
+                                echo "<div style='color:blue;font-weight:bold'><i class='fa fa-close' aria-hidden='true'></i> Normal </div>";
 
-
+                            }
+                        ?>
 
                     </td>
 

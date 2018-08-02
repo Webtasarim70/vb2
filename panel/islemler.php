@@ -170,6 +170,49 @@ require_once "ust.php"; ?>
 
                                      </div>
                                 </div>
+
+                             <div class="form-group">
+                                    <div class="col-lg-2 control-label" for="inputEmail"> Öne Çıkarılma</div>
+                                     <div class="col-lg-12">
+                                        <select name="durum" class="form-control">
+                                            <?php
+                                                if ($row->video_tavsiye==1){
+                                                    echo '<option value="1" selected>Öne Çıkarılmış  </option>  
+                                                    <option value="2">Normal  </option>';
+                                                }else{
+                                                    echo '<option value="1"> Öne Çıkarılmış  </option>  
+                                                    <option value="2" selected> Normal  </option>';
+
+                                                }
+                                            ?>
+
+                                        </select>
+
+                                     </div>
+                                </div>
+
+
+
+
+
+                        <div class="form-group">
+                                    <div class="col-lg-2 control-label" for="inputEmail">Kategorisi</div>
+                                     <div class="col-lg-12">
+                                        
+                                     <select name="kategori_ust" id="kategori_ust>
+                                              <option value="0">Seç</option>
+                                               <?php
+                                                    kategori_listele()            
+                                               ?>
+                                    </select>
+
+                                     </div>
+                                </div>
+
+
+
+
+
                                 <div class="form-group">
                                     <div class="col-lg-12 col-lg-offset-2">
                                         <button type="submit" name="videoguncelle" class="btn btn-primary"> Videoyu Güncelle</button>
