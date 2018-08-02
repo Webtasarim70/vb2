@@ -51,6 +51,9 @@ require_once "ust.php"; ?>
                                     $acik=$_POST['aciklama'];
                                     $etiket=post('etiket');
                                     $durum=post('durum');
+                                    $kategori=post('kategori');
+                                    $tavsiye=post('tavsiye');
+
 
                                     $sefyap= explode(',',$etiket);
                                     $dizi=array();
@@ -76,7 +79,9 @@ require_once "ust.php"; ?>
                                     video_aciklama           =:a,
                                     video_durum              =:d,
                                     video_etiketler          =:e,
-                                    video_sefetiketler       =:et 
+                                    video_sefetiketler       =:et, 
+                                    video_tavsiye            =:tavsiye,
+                                    video_kat                =:kategori
                                       WHERE video_id=:id');
                                      $videoguncelle->execute(array(
                                              ':s'           =>$sahip,
@@ -88,6 +93,8 @@ require_once "ust.php"; ?>
                                              ':d'           =>$durum,
                                              ':e'           =>$etiket,
                                              ':et'          =>$deger,
+                                             ':tavsiye'     =>$tavsiye,
+                                             ':kategori'    =>$kategori,
                                              ':id'          =>$id
                                      ));
 
@@ -174,7 +181,7 @@ require_once "ust.php"; ?>
                              <div class="form-group">
                                     <div class="col-lg-2 control-label" for="inputEmail"> Öne Çıkarılma</div>
                                      <div class="col-lg-12">
-                                        <select name="durum" class="form-control">
+                                        <select name="tavsiye" class="form-control">
                                             <?php
                                                 if ($row->video_tavsiye==1){
                                                     echo '<option value="1" selected>Öne Çıkarılmış  </option>  
@@ -199,7 +206,7 @@ require_once "ust.php"; ?>
                                     <div class="col-lg-2 control-label" for="inputEmail">Kategorisi</div>
                                      <div class="col-lg-12">
                                         
-                                      <select name="ana_kategori_id" id="ana_kategori_id">
+                                      <select name="kategori" id="ana_kategori_id">
                                       <option value="0">Seç</option>
                                        <?php
                                             kategori_listele($ana_kategori_id)            

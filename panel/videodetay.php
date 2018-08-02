@@ -71,6 +71,8 @@ require_once "ust.php";
                                     $acik=$_POST['aciklama'];
                                     $etiket=post('etiket');
                                     $tarih =date('d.M.Y h:i:s');
+                                    $kategori=post('kategori');
+                                    $tavsiye=post('tavsiye');
 
                                     $sefyap= explode(',',$etiket);
                                     $dizi=array();
@@ -98,6 +100,8 @@ require_once "ust.php";
                                     video_goruntulenme       =:g,
                                     video_durum              =:d,
                                     video_etiketler          =:e,
+                                    video_tavsiye            =:tavsiye,
+                                    video_kat                =:kategori,
                                     video_sefetiketler       =:sefe 
                                       ');
 
@@ -112,6 +116,8 @@ require_once "ust.php";
                                              ':g'           =>0,
                                              ':d'           =>1,
                                              ':e'           =>$etiket,
+                                             ':tavsiye'     =>$tavsiye,
+                                             ':kategori'    =>$kategori,
                                              ':sefe'        =>$deger
                                                                               ));
 
@@ -177,6 +183,48 @@ require_once "ust.php";
                   value="<?php foreach ($etiket as $row){ echo $row.", ";}  ?>">
                 </div>
               </div>
+
+
+                             <div class="form-group">
+                                    <div class="col-lg-2 control-label" for="inputEmail"> Öne Çıkarılma</div>
+                                     <div class="col-lg-12">
+                                        <select name="tavsiye" class="form-control">
+                                            <?php
+                                                if ($row->video_tavsiye==1){
+                                                    echo '<option value="1" selected>Öne Çıkarılmış  </option>  
+                                                    <option value="2">Normal  </option>';
+                                                }else{
+                                                    echo '<option value="1"> Öne Çıkarılmış  </option>  
+                                                    <option value="2" selected> Normal  </option>';
+
+                                                }
+                                            ?>
+
+                                        </select>
+
+                                     </div>
+                                </div>
+
+
+
+
+
+                        <div class="form-group">
+                                    <div class="col-lg-2 control-label" for="inputEmail">Kategorisi</div>
+                                     <div class="col-lg-12">
+                                        
+                                      <select name="kategori" id="ana_kategori_id">
+                                      <option value="0">Seç</option>
+                                       <?php
+                                            kategori_listele($ana_kategori_id)            
+                                       ?>
+                                      </select>
+
+                                     </div>
+                                </div>
+
+
+
 
 
                            <div class="form-group">

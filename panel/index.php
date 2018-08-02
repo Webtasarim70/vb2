@@ -29,8 +29,12 @@ require_once "ust.php"; ?>
           $goster=$s * $lim - $lim;
 
 
+
+
+
           #asıl sorgumuz
-          $videolar=$db->prepare("SELECT * FROM  videolar ORDER BY video_id DESC LIMIT :goster, :lim");
+           $videolar=$db->prepare("SELECT * FROM  videolar INNER JOIN kategori ON kategori.kategori_id=videolar.video_kat ORDER BY video_id DESC LIMIT :goster, :lim");
+         // $videolar=$db->prepare("SELECT * FROM  videolar ORDER BY video_id DESC LIMIT :goster, :lim");
           $videolar->bindValue(":goster",(int) $goster, PDO::PARAM_INT);
           $videolar->bindValue(":lim", (int) $lim, PDO::PARAM_INT);
           $videolar->execute();
@@ -65,7 +69,6 @@ require_once "ust.php"; ?>
                     <th scope="col">Video Url</th>
                     <th scope="col">Video Sahibi</th>
                     <th scope="col">Kategori</th>
-                    <th scope="col">Üst Kat.</th>
                     <th scope="col">Durum</th>
                     <th scope="col">İşlemler</th>
 
@@ -85,8 +88,7 @@ require_once "ust.php"; ?>
 
                     <td><a target="_blank" data-toggle="tooltip" data-placement="top" title="Youtubede İzle" href="https://www.youtube.com/watch?v=<?php echo $row['video_url'] ?>"><?php echo $row['video_url'] ?></a></td>
                     <td><?php echo $row['video_sahibi'] ?></td>
-                    <td><?php echo $row['video_kat'] ?></td>
-                    <td><?php echo $row['video_ustkat'] ?></td>
+                    <td><?php echo $row['kategori_adi'] ?></td>
                     <td>
 
 

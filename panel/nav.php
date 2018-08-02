@@ -63,6 +63,19 @@ echo !defined("emre")? die(''): null;
               </ul>
           </li>
 
+  <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Oneriler">
+              <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents4" data-parent="#exampleAccordion">
+                  <i class="fa fa-fw fa-plus-square-o"></i>
+                  <span class="nav-link-text">Kategoriler</span>
+              </a>
+              <ul class="sidenav-second-level collapse" id="collapseComponents4">
+                  <li>
+                      <a href="kategoriler.php">Kategori Listesi</a>
+                  </li>
+
+              </ul>
+          </li>
+
 
 
 		

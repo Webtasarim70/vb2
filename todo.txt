@@ -1,9 +1,17 @@
 
 önyüz
 - etiket yerine kategori video listelemelerinde
+- video linkleri düzenlenecek
+- substr kullanımları sıkıntılı.
+- (single) 
+- (*relative)
+- (sidebar) düzenlenecek
 
 panel
-- (index) video listeleme kısmında video kategorileri ve üst kategorileri gösterilecek,
-- (islemler) video düzenleme formu 
-- (islemler) videolara kategori, tavsiye edilme ekleme sql 
+✔  (index) video listeleme kısmında video kategorileri ve üst kategorileri gösterilecek,
+✔ (islemler) video düzenleme formu 
+✔ (islemler) videolara kategori, tavsiye edilme ekleme sql 
 - (*kategori) listeleme ve düzenleme
+
+
+
