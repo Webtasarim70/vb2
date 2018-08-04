@@ -12,6 +12,7 @@ panel
 ✔ (islemler) video düzenleme formu 
 ✔ (islemler) videolara kategori, tavsiye edilme ekleme sql 
 - (*kategori) listeleme ve düzenleme
-
+- (islemler) kategori islemleri
+ 
 
 

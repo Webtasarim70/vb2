@@ -72,6 +72,9 @@ echo !defined("emre")? die(''): null;
                   <li>
                       <a href="kategoriler.php">Kategori Listesi</a>
                   </li>
+                  <li>
+              <a href="islemler.php?islem=yenikategori">Yeni Kategori Ekle</a>
+            </li>
 
               </ul>
           </li>

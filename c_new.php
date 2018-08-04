@@ -9,7 +9,8 @@
                         <div class="row">
 
                             <?php 
-                            $videolar=$db->prepare("SELECT * FROM  videolar WHERE video_durum=:v ORDER BY video_eklemetarihi DESC LIMIT 3 ");
+                            $videolar=$db->prepare("SELECT * FROM  videolar  INNER JOIN kategori ON 
+                        kategori.kategori_id=videolar.video_kat WHERE video_durum=:v ORDER BY video_eklemetarihi DESC LIMIT 3 ");
                             $videolar->execute(array(':v'=>1));
                             if ($videolar->rowCount()) {
                                 foreach ($videolar as $row) {
@@ -21,7 +22,7 @@
                                 <div class="wrap-vid">
                                     <div class="zoom-container">
                                         <div class="zoom-caption">
-                                            <span><?php echo substr($row['video_etiketler'], 0,20); ?></span>
+                                            <span><?php echo $row['kategori_adi'] ?></span>
                                             <a href="single.html">
                                                 <i class="fa fa-play-circle-o fa-5x" style="color: #fff"></i>
                                             </a>

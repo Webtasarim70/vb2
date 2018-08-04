@@ -2,65 +2,59 @@
             <div class="featured">
                 <div class="main-vid">
                     <div class="col-md-6">
+
+                     <?php
+                       $videolar=$db->prepare("SELECT * FROM  videolar INNER JOIN kategori ON 
+                        kategori.kategori_id=videolar.video_kat
+                        WHERE video_durum=:d AND video_tavsiye=:t  ORDER BY video_id DESC LIMIT 1");
+                       $videolar->execute(array(':d'=>1, ':t'=>1 ));
+                          if ($videolar->rowCount()) {
+                          foreach ($videolar as $row) {
+                                        ?>
+
+
                         <div class="zoom-container">
                             <div class="zoom-caption">
-                                <span>Video's Tag</span>
+                                <span><?php echo $row['kategori_adi'] ?></span>
                                 <a href="single.html">
                                     <i class="fa fa-play-circle-o fa-5x" style="color: #fff"></i>
                                 </a>
-                                <p>Video's Name</p>
+                                <p><?php echo $row['video_baslik'] ?></p>
                             </div>
-                            <img src="images/1.jpg" />
+                            <img style="height:auto; width:610px" src="<?php echo $row['video_resim'] ?>" />
                         </div>
+
+                    <?php }} ?>
                     </div>
                 </div>
+
                 <div class="sub-vid">
                     
-                    <div class="col-md-3">
-                        <div class="zoom-container">
-                            <div class="zoom-caption">
-                                <span>Video's Tag</span>
-                                <a href="single.html">
-                                    <i class="fa fa-play-circle-o fa-5x" style="color: #fff"></i>
-                                </a>
-                                <p>Video's Name</p>
-                            </div>
-                            <img src="images/2.jpg" />
-                        </div>
-                        <div class="zoom-container">
-                            <div class="zoom-caption">
-                                <span>Video's Tag</span>
-                                <a href="single.html">
-                                    <i class="fa fa-play-circle-o fa-5x" style="color: #fff"></i>
-                                </a>
-                                <p>Video's Name</p>
-                            </div>
-                            <img src="images/3.jpg" />
-                        </div>
-                    </div>
 
-                    <div class="col-md-3">
-                        <div class="zoom-container">
-                            <div class="zoom-caption">
-                                <span>Video's Tag</span>
-                                <a href="single.html">
-                                    <i class="fa fa-play-circle-o fa-5x" style="color: #fff"></i>
-                                </a>
-                                <p>Video's Name</p>
+                        <?php
+                       $videolar=$db->prepare("SELECT * FROM  videolar INNER JOIN kategori ON 
+                        kategori.kategori_id=videolar.video_kat WHERE video_durum=:d AND video_tavsiye=:t  ORDER BY video_id DESC LIMIT 4");
+                       $videolar->execute(array(':d'=>1, ':t'=>1 ));
+                          if ($videolar->rowCount()) {
+                          foreach ($videolar as $row) {
+                                        ?>
+
+                        <div class="col-md-3">
+                            <div class="zoom-container">
+                                <div class="zoom-caption">
+                                    <span><?php echo $row['kategori_adi'] ?></span>
+                                    <a href="single.html">
+                                        <i class="fa fa-play-circle-o fa-5x" style="color: #fff"></i>
+                                    </a>
+                                    <p><?php echo $row['video_baslik'] ?></p>
+                                </div>
+                                <img src="<?php echo $row['video_resim'] ?>" />
                             </div>
-                            <img src="images/4.jpg" />
-                        </div>
-                        <div class="zoom-container">
-                            <div class="zoom-caption">
-                                <span>Video's Tag</span>
-                                <a href="single.html">
-                                    <i class="fa fa-play-circle-o fa-5x" style="color: #fff"></i>
-                                </a>
-                                <p>Video's Name</p>
-                            </div>
-                            <img src="images/6.jpg" />
-                        </div>
-                    </div>
+                                                    </div>
+
+                        <?php }} ?>
+
+                    
                 </div>
                 <div class="clear"></div>
             </div>

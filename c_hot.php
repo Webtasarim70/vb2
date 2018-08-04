@@ -10,7 +10,8 @@
                                    
                             <?php 
 
-                           $videolar=$db->prepare("SELECT * FROM  videolar WHERE video_durum=:d  ORDER BY video_goruntulenme DESC LIMIT 1");
+                           $videolar=$db->prepare("SELECT * FROM  videolar INNER JOIN kategori ON 
+                        kategori.kategori_id=videolar.video_kat WHERE video_durum=:d  ORDER BY video_goruntulenme DESC LIMIT 1");
                             $videolar->execute(array(':d'=>1));
                             if ($videolar->rowCount()) {
                                 foreach ($videolar as $row) {
@@ -20,7 +21,7 @@
                                 <div class="wrap-vid">
                                     <div class="zoom-container">
                                         <div class="zoom-caption">
-                                            <span><?php echo substr($row['video_etiketler'], 0,30); ?></span>
+                                            <span><?php echo $row['kategori_adi'] ?></span>
                                             <a href="single.html">
                                                 <i class="fa fa-play-circle-o fa-5x" style="color: #fff"></i>
                                             </a>
@@ -49,7 +50,8 @@
                             <div class="col-md-6">
 
                             <?php 
-                            $videolar=$db->prepare("SELECT * FROM  videolar WHERE video_durum=:d  ORDER BY video_goruntulenme DESC LIMIT 4 ");
+                            $videolar=$db->prepare("SELECT * FROM  videolar INNER JOIN kategori ON 
+                        kategori.kategori_id=videolar.video_kat WHERE video_durum=:d  ORDER BY video_goruntulenme DESC LIMIT 4 ");
                             $videolar->execute(array(':d'=>1));
                             if ($videolar->rowCount()) {
                                 foreach ($videolar as $row) {
@@ -61,7 +63,7 @@
                                 <div class="post wrap-vid">
                                     <div class="zoom-container">
                                         <div class="zoom-caption">
-                                            <span><?php echo substr($row['video_etiketler'], 0,20); ?></span>
+                                            <span><?php echo $row['kategori_adi'] ?></span>
                                             <a href="single.html">
                                                 <i class="fa fa-play-circle-o fa-5x" style="color: #fff"></i>
                                             </a>

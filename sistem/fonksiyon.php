@@ -46,6 +46,8 @@ function post($parametre, $kosul = false){
         return $ip;
     }
 
+// http://www.bilgiegitim.com/412-php-programlama-kursu-ders-notlari/php-pdo-ile-sinirsiz-alt-kategori-olusturma
+
          function kategori_listele($ana_kategori_id,$kategori_id=0,$onek = 0) {
      //Alt Kategori çağıran fonksiyon başladı
      global $db; //PDO veritabanı değişkenini fonksiyon içinde kullanabilmek için global yaptık. 

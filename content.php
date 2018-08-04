@@ -17,7 +17,7 @@
         <div class="row">
             <div id="main-content" class="col-md-8">
              
-             <?php include "c_featured.php"; ?>
+             <?php  include "c_featured.php"; ?>
 
               
 

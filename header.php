@@ -56,7 +56,7 @@ require_once "sistem/fonksiyon.php";
 						<li><a href="<?php echo $arow->siteurl; ?>"><i class="fa fa-home"></i> Anasayfa</a></li>
                         <li><a href="panel/giris.php"><i class="fa fa-folder-open"></i> Panel</a></li>
 
-                        <li><a href="contact.html"><i class="fa fa-comments"></i> İletişim</a></li>
+                        <li><a href="contact.php"><i class="fa fa-comments"></i> İletişim</a></li>
 						<li><a href="#"><i class="fa fa-question-circle"></i> SSS</a></li>
 					</ul>
 				</div>
@@ -124,7 +124,7 @@ require_once "sistem/fonksiyon.php";
 						</div>
 					</li>
 					<li><a href="archive.html"><i class="fa fa-cubes"></i> Arşiv</a></li>
-					<li><a href="contact.html"><i class="fa fa-envelope"></i> İletişim</a></li>
+					<li><a href="contact.php"><i class="fa fa-envelope"></i> İletişim</a></li>
 				</ul>
 			</div>
 		</div>

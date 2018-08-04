@@ -630,6 +630,104 @@ require_once "ust.php"; ?>
                     }
                     break;
 
+                     case 'yenikategori':
+
+
+                       if (isset($_POST['kategoriekle'])){
+
+                         $ad=post('ad');
+                         $aciklama=post('aciklama');
+                         $id=post('id');
+                         $durum=1;
+
+                           #alanlar boş bırakılmasın
+                           if (!$ad || !$aciklama|| !$id || !$durum ){
+                            echo "<div class='alert alert-danger'>Kategori adı, açıklaması ve üst kategorisi boş bırakılamaz</div>";
+
+                           }else{
+                               #daha önceden kayıtlımı
+                                $varmi=$db->prepare("SELECT * FROM kategori WHERE kategori_adi=:ad");
+                                $varmi->execute(array(':ad'=>$ad));
+                                if ($varmi->rowCount()){
+                                echo "<div class='alert alert-danger'>Bu kategori daha önceden kaydedilmiş</div>";
+                                }else{  
+
+                           $guncelle=$db->prepare("INSERT INTO kategori SET 
+                            ana_kategori_id =:id,
+                            kategori_adi =:ad, 
+                            kategori_aciklama =:acik, 
+                            kategori_durum =:d");
+
+                           $guncelle2->execute(array(
+
+                            ':id'=>$id, 
+                            ':ad'=>$ad,
+                            ':acik'=>$aciklama, 
+                            ':d'=>$durum));
+                                                 if ($guncelle2){
+                                                          echo "<div class='alert alert-success'>Yönetici güncellendi.....</div>";
+                                                          header('refresh:3;url=yoneticiler.php');
+                                                        }else{
+                                                            echo "<div class='alert alert-danger'>Bir hata oluştu</div>";
+                                                        }
+
+                                            }
+
+
+                                }
+                           
+
+
+                       }else{
+
+
+
+                  ?>
+                  #kategori ekleme formu
+                            <form class="form-horizontal" action="" method="POST">
+
+                                <div class="form-group">
+                                    <div class="col-lg-2 control-label" for="inputEmail"> Kategori Adı </div>
+                                     <div class="col-lg-12">
+                                    <input  type="text" class="form-control" name="ad" placeholder="Kategori Adı">
+                                     </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-lg-2 control-label" for="inputEmail"> Açıklama </div>
+                                    <div class="col-lg-12">
+                                        <input  type="text" class="form-control" name="aciklama" placeholder="Açıklama">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-lg-2 control-label" for="inputEmail">Kategorisi</div>
+                                     <div class="col-lg-12">
+                                        
+                                      <select name="id" id="id">
+                                      <option value="0">Seç</option>
+                                       <?php
+                                            kategori_listele($ana_kategori_id);            
+                                       ?>
+                                      </select>
+
+                                     </div>
+                                </div>
+
+
+
+
+                            <div class="form-group">
+                                <div class="col-lg-12 col-lg-offset-2">
+                                    <button type="submit" name="kategoriekle" class="btn btn-primary"> Kategori Ekle</button>
+                                </div>
+                            </div>
+                            </form>
+                  <?php }
+
+                  break;
+
+
 
             #case sonu
             }

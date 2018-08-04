@@ -44,7 +44,8 @@ require_once "ust.php"; ?>
             $goster=$s * $lim - $lim;
 
           $kategoriler=$db->prepare("SELECT * FROM kategori  ORDER BY ana_kategori_id ASC LIMIT :goster, :lim");
-// $kategoriler=$db->prepare("SELECT * FROM kategori  INNER JOIN kategori ON  kategori.ana_kategori_id=kategori.kategori_id ORDER BY ana_kategori_id ASC LIMIT :goster, :lim");
+          // $kategoriler=$db->prepare("SELECT * FROM kategori  INNER JOIN kategori ON  kategori.ana_kategori_id=kategori.kategori_id ORDER BY ana_kategori_id ASC LIMIT :goster, :lim");
+          
             $kategoriler->bindValue(":goster",(int) $goster, PDO::PARAM_INT);
             $kategoriler->bindValue(":lim", (int) $lim, PDO::PARAM_INT);
             $kategoriler->execute();
@@ -65,8 +66,6 @@ require_once "ust.php"; ?>
           <?php
 
               foreach($kategoriler as $row){ ?>
-
-
             <tbody>
             <tr>
                 <td><?php echo $row['kategori_id']?></td>
@@ -75,13 +74,26 @@ require_once "ust.php"; ?>
                     <?php 
                     if ($row['ana_kategori_id']==0) {
                       echo("Üst Kategori");
-                    }else{ 
-                      echo $row['ana_kategori_id'];
+                    }else{ // 0 değil ise
+                     
+                     $k=$row['ana_kategori_id'];
 
-                    }
+                     $sor=$db->prepare("SELECT kategori_adi FROM kategori WHERE kategori_id=:id");
+                     $sor->execute(array(':id' => $k));
+                     $yazdir=$sor->fetch(PDO::FETCH_ASSOC);
+                     
+
+                     if ($sor->rowCount()) {
+                      echo ($yazdir['kategori_adi']);
+
+                     }else{ 
+                      echo('no');
+                      } 
+
+                    } 
 
                     ?>
-                                      
+                                   
 
                   </td>
                 <td><?php echo $row['kategori_aciklama']?></td>
@@ -103,17 +115,10 @@ require_once "ust.php"; ?>
 
 
                 <td>
-                    <?php
-                        if ($row['kategori_durum']==1){
- ?>
-                    <a href="islemler.php?islem=kategorionaykaldir&id=<?php echo $row['kategori_id']?>"><i class="fa fa-eraser"></i></a> <?php }else{ ?>
+                    
 
-                    <a href="islemler.php?islem=kategorionayla&id=<?php echo $row['kategori_id']?>"><i class="fa fa-edit"></i></a>
-                     <?php } ?>
-
-
-
-
+                  <a href="islemler.php?islem=kategoriduzenle&id=<?php echo $row['kategori_id']?>" "><i class="fa fa-edit"></i></a>
+ 
                     | <a href="islemler.php?islem=kategorisil&id=<?php echo $row['kategori_id']?>" onclick="return confirm('Silmek istiyor musunuz ?');"><i class="fa fa-remove"></i></a> </td>
 
             </tr>
