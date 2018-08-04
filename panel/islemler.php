@@ -521,22 +521,6 @@ require_once "ust.php"; ?>
                     }
                 break;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                 case 'onaykaldir':
                 if (isset($_SESSION['oturum'])){
                     $id=@get('id');
@@ -638,10 +622,12 @@ require_once "ust.php"; ?>
                          $ad=post('ad');
                          $aciklama=post('aciklama');
                          $id=post('id');
+
+
                          $durum=1;
 
                            #alanlar boş bırakılmasın
-                           if (!$ad || !$aciklama|| !$id || !$durum ){
+                           if (!$ad || !$aciklama || !$durum ){
                             echo "<div class='alert alert-danger'>Kategori adı, açıklaması ve üst kategorisi boş bırakılamaz</div>";
 
                            }else{
@@ -653,20 +639,20 @@ require_once "ust.php"; ?>
                                 }else{  
 
                            $guncelle=$db->prepare("INSERT INTO kategori SET 
-                            ana_kategori_id =:id,
+                            ana_kategori_id=:id,
                             kategori_adi =:ad, 
                             kategori_aciklama =:acik, 
                             kategori_durum =:d");
 
-                           $guncelle2->execute(array(
+                           $guncelle->execute(array(
 
                             ':id'=>$id, 
                             ':ad'=>$ad,
                             ':acik'=>$aciklama, 
                             ':d'=>$durum));
-                                                 if ($guncelle2){
-                                                          echo "<div class='alert alert-success'>Yönetici güncellendi.....</div>";
-                                                          header('refresh:3;url=yoneticiler.php');
+                                                 if ($guncelle){
+                                                          echo "<div class='alert alert-success'>Kategori eklendi.....</div>";
+                                                          header('refresh:3;url=kategoriler.php');
                                                         }else{
                                                             echo "<div class='alert alert-danger'>Bir hata oluştu</div>";
                                                         }
@@ -725,6 +711,124 @@ require_once "ust.php"; ?>
                             </form>
                   <?php }
 
+                  break;
+
+                        case 'kategorisil':
+                    if (isset($_SESSION['oturum'])){
+                        $id=@get('id');
+                        $sil=$db->prepare('DELETE FROM kategori WHERE kategori_id=:id');
+                        $sil->execute(array(':id'=>$id));
+                        if ($sil){
+                            echo "<div class='alert alert-success'>Kategori silindi, bekleyiniz</div>";
+                            header('refresh:3;url=kategoriler.php');
+                        }else{
+                            echo "<div class='alert alert-danger'>hata oluştu, bekleyiniz</div>";
+                            header('refresh:2;url=kategoriler.php');
+                        }
+                    }
+                    break;
+
+
+                    case 'kategoriduzenle':
+                        $id=@get('id');
+                        $sec=$db->prepare("SELECT * FROM kategori WHERE kategori_id=:id");
+
+                        $sec->execute(array(':id'=>$id));
+                        if ($sec->rowCount()){
+                            $row=$sec->fetch(PDO::FETCH_OBJ);
+
+                       if (isset($_POST['kategoriduzenle'])){
+                        $id=@get('id');
+
+                         $ad=post('ad');
+                         $aciklama=post('aciklama');
+                         $kat_id=post('kat_id');
+
+                         $durum=1;
+
+                           #alanlar boş bırakılmasın
+                           if (!$ad || !$aciklama || !$durum ){
+                            echo "<div class='alert alert-danger'>Kategori adı, açıklaması ve üst kategorisi boş bırakılamaz</div>";
+
+                           }else{
+
+
+                           $guncelle=$db->prepare("UPDATE kategori SET 
+                            ana_kategori_id=:kat_id,
+                            kategori_adi =:ad, 
+                            kategori_aciklama =:acik, 
+                            kategori_durum =:d 
+                            WHERE kategori_id=:id");
+
+                           $guncelle->execute(array(
+                             ':id'=>$id,
+                            ':kat_id'=>$kat_id,
+                            ':ad'=>$ad,
+                            ':acik'=>$aciklama,
+                            ':d'=>$durum));
+                                                 if ($guncelle){
+                                                          echo "<div class='alert alert-success'>Kategori eklendi.....</div>";
+                                                          header('refresh:3;url=kategoriler.php');
+                                                        }else{
+                                                            echo "<div class='alert alert-danger'>Bir hata oluştu</div>";
+                                                        }
+
+
+
+
+                                }
+
+
+
+                       }else{
+
+
+
+
+
+                  ?>
+                  #kategori duzenleme formu
+                            <form class="form-horizontal" action="" method="POST">
+
+                                <div class="form-group">
+                                    <div class="col-lg-2 control-label" for="inputEmail"> Kategori Adı </div>
+                                     <div class="col-lg-12">
+                                    <input  type="text" class="form-control" name="ad" value="<?php  echo $row->kategori_adi ?>">
+                                     </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-lg-2 control-label" for="inputEmail"> Açıklama </div>
+                                    <div class="col-lg-12">
+                                        <input  type="text" class="form-control" name="aciklama" value="<?php  echo $row->kategori_aciklama ?>">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-lg-12 control-label" for="inputEmail">Kategorisi (Üst Kategori Olacaksa Seçmeyin)</div>
+                                     <div class="col-lg-12">
+
+                                      <select name="kat_id" id="id">
+                                      <option value="0">Seç</option>
+                                       <?php
+                                            kategori_listele($ana_kategori_id);
+                                       ?>
+                                      </select>
+
+                                     </div>
+                                </div>
+
+
+
+
+                            <div class="form-group">
+                                <div class="col-lg-12 col-lg-offset-2">
+                                    <button type="submit" name="kategoriduzenle" class="btn btn-primary"> Kategori Düzenle</button>
+                                </div>
+                            </div>
+                            </form>
+                  <?php }
+}
                   break;
 
 
