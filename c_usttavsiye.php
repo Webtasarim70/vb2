@@ -19,7 +19,7 @@
                                 <a href="single.html">
                                     <i class="fa fa-play-circle-o fa-5x" style="color: #fff"></i>
                                 </a>
-                                <p><?php echo $row['video_baslik'] ?></p>
+                                <p><small><?php echo $row['video_baslik'] ?> </small></p>
                             </div>
                             <img style="height:auto; width:610px" src="<?php echo $row['video_resim'] ?>" />
                         </div>
@@ -46,7 +46,7 @@
                                     <a href="single.html">
                                         <i class="fa fa-play-circle-o fa-5x" style="color: #fff"></i>
                                     </a>
-                                    <p><?php echo $row['video_baslik'] ?></p>
+                                    <p><small><?php echo $row['video_baslik'] ?> </small></p>
                                 </div>
                                 <img src="<?php echo $row['video_resim'] ?>" />
                             </div>

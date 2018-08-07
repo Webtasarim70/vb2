@@ -26,7 +26,7 @@
                                             <a href="single.html">
                                                 <i class="fa fa-play-circle-o fa-5x" style="color: #fff"></i>
                                             </a>
-                                            <p><?php echo substr($row['video_baslik'], 0,30); ?></p>
+                                           <!-- <p><?php echo substr($row['video_baslik'], 0,30); ?></p> -->
                                         </div>
                                         <img src="<?php echo $row['video_resim']; ?>" />
                                     </div>
