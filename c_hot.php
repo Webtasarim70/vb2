@@ -22,7 +22,7 @@
                                     <div class="zoom-container">
                                         <div class="zoom-caption">
                                             <span><?php echo $row['kategori_adi'] ?></span>
-                                            <a href="single.html">
+                                            <a href=""<?php echo $site ?>/single.php?info=<?php echo $row['video_url']; ?>">">
                                                 <i class="fa fa-play-circle-o fa-5x" style="color: #fff"></i>
                                             </a>
                                             <p><?php echo $row['video_baslik']; ?></p>
