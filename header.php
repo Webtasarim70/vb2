@@ -97,29 +97,12 @@ require_once "sistem/fonksiyon.php";
 						</div>
 					</li>
 					<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-list"></i> Kategori</a>
-						<div class="dropdown-menu" style="margin-left: -203.625px;">
+						<div class="dropdown-menu" >
 							<div class="dropdown-inner">
 								<ul class="list-unstyled">
-									<li><a href="archive.html">Text 301</a></li>
-									<li><a href="archive.html">Text 302</a></li>
-									<li><a href="archive.html">Text 303</a></li>
-									<li><a href="archive.html">Text 304</a></li>
-									<li><a href="archive.html">Text 305</a></li>
+									<li><a href="archive.html"><?php kategori_link($ana_kategori_id); ?></a></li>
 								</ul>
-								<ul class="list-unstyled">
-									<li><a href="archive.html">Text 306</a></li>
-									<li><a href="archive.html">Text 307</a></li>
-									<li><a href="archive.html">Text 308</a></li>
-									<li><a href="archive.html">Text 309</a></li>
-									<li><a href="archive.html">Text 310</a></li>
-								</ul>
-								<ul class="list-unstyled">
-									<li><a href="archive.html">Text 311</a></li>
-									<li><a href="archive.html">Text 312</a></li>
-									<li><a href="archive.html#">Text 313</a></li>
-									<li><a href="archive.html#">Text 314</a></li>
-									<li><a href="archive.html">Text 315</a></li>
-								</ul>
+								
 							</div>
 						</div>
 					</li>
