@@ -11,7 +11,7 @@ if(isset($_POST['name']))
 	$email=$_POST['email'];
 	$message=$_POST['message'];
 
-	$to = "youremail@gmail.com";
+	$to = "yunusemrex@gmail.com";
 	$subject = "Zerotheme - Testing Contact Form";
 	$message = " Name: " . $name ."\r\n Email: " . $email . "\r\n Message:\r\n" . $message;
 	 
@@ -260,13 +260,14 @@ if(isset($_POST['name']))
 					<div class="box">
 						<center><div class="art-header">
 							<h1 class="center">Contact</h1>
+<!-- form -->
 						</div></center>
 						<!--Warning-->
 						<center><?php echo $text;?></center>
 						<!---->
 						<div class="art-content">
 							<div id="contact_form">
-								<form name="form1" id="ff" method="post" action="contact.php">
+								<form name="form1" id="ff" method="post" action="">
 									<label>
 									<span>Enter your name:</span>
 									<input type="text"  name="name" id="name" required>
@@ -279,7 +280,7 @@ if(isset($_POST['name']))
 									<span>Your message here:</span>
 									<textarea name="message" id="message"></textarea>
 									</label>
-									<center><input class="sendButton" type="submit" name="Submit" value="Submit"></center>
+									<center><input class="sendButton" type="submit" name="name" value="Submit"></center>
 								</form>
 							</div>
 						</div>

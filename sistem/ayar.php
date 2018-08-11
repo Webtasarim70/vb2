@@ -10,7 +10,7 @@
 @ob_start();
 try {
     #veritabanı bağlantısı yapıyoruz.
-$db = new  PDO("mysql:host=localhost; dbname=vb2;charset=utf8", "root", "12345678");
+$db = new  PDO("mysql:host=localhost; dbname=vb2; charset=utf8", "root", "12345678");
 #garantiye alma
     $db->query("SET CHARACTER SET UTF8");
     $db->query("SET NAMES UTF8");
