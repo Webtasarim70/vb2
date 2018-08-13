@@ -92,7 +92,7 @@ function post($parametre, $kosul = false){
            }
  
            $ekle=str_repeat('-', $onek);
-           echo "<li><a href='archive.php?kat=$ana_kategori_adi'>$onay $ekle $ana_kategori_adi</a></li>";
+           echo "<li><a href='archive.php?kat=$kategori_id'>$onay $ekle $ana_kategori_adi</a></li>";
  
            kategori_link ($ana_kategori_id,$kategori_id,$onek+3);
       }

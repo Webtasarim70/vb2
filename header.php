@@ -73,6 +73,8 @@ require_once "sistem/fonksiyon.php";
 			<div class="collapse navbar-collapse navbar-ex1-collapse">
 				<ul class="nav navbar-nav">
 					<li><a href="<?php echo $arow->site_url; ?>"><i class="fa fa-home"></i> Anasayfa</a></li>
+
+<!--
 					<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Üyelik</a>
 						<div class="dropdown-menu">
 							<div class="dropdown-inner">
@@ -83,6 +85,8 @@ require_once "sistem/fonksiyon.php";
 							</div>
 						</div>
 					</li>
+-->
+<!--
 					<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-play-circle-o"></i> Video</a>
 						<div class="dropdown-menu">
 							<div class="dropdown-inner">
@@ -96,17 +100,19 @@ require_once "sistem/fonksiyon.php";
 							</div> 
 						</div>
 					</li>
+-->
+
+
 					<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-list"></i> Kategori</a>
 						<div class="dropdown-menu" >
 							<div class="dropdown-inner">
 								<ul class="list-unstyled">
-									<li><a href="archive.html"><?php kategori_link($ana_kategori_id); ?></a></li>
+									<li><?php kategori_link($ana_kategori_id); ?></li>
 								</ul>
 								
 							</div>
 						</div>
 					</li>
-					<li><a href="archive.html"><i class="fa fa-cubes"></i> Arşiv</a></li>
 					<li><a href="contact.php"><i class="fa fa-envelope"></i> İletişim</a></li>
 				</ul>
 			</div>
