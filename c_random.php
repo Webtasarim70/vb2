@@ -29,7 +29,19 @@
                                         </div>
                                         <img src="<?php echo $row['video_resim']; ?>" />
                                     </div>
-                                    <h3 class="vid-name"><a href="<?php echo $site ?>/single.php?info=<?php echo $row['video_url']; ?>"><?php echo $row['video_baslik']; ?></a></h3>
+                                    <h3 class="vid-name"><a href="<?php echo $site ?>/single.php?info=<?php echo $row['video_url']; ?>">
+                                        
+
+                                        <?php 
+                                        if (strlen($row['video_baslik']==20)) {
+                                            echo($row['video_baslik']);
+                                        }else {
+                                            echo (substr($row['video_baslik'], 0,20))."...";
+                                        }
+                                        ?>
+                                            
+
+                                        </a></h3>
                                     <div class="info">
                                         <h5>By <a href="#"><?php echo $row['video_sahibi']; ?></a></h5>
                                         <span><i class="fa fa-calendar"></i><?php echo $row['video_eklemetarihi']; ?></span>

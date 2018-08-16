@@ -51,7 +51,7 @@
 
                             <?php 
                             $videolar=$db->prepare("SELECT * FROM  videolar INNER JOIN kategori ON 
-                        kategori.kategori_id=videolar.video_kat WHERE video_durum=:d  ORDER BY video_goruntulenme DESC LIMIT 4 ");
+                        kategori.kategori_id=videolar.video_kat WHERE video_durum=:d  ORDER BY video_goruntulenme DESC LIMIT 2,4 ");
                             $videolar->execute(array(':d'=>1));
                             if ($videolar->rowCount()) {
                                 foreach ($videolar as $row) {
@@ -71,7 +71,16 @@
                                         <img src="<?php echo $row['video_resim']; ?>" />
                                     </div>
                                     <div class="wrapper">
-                                        <h5 class="vid-name"><a href="<?php echo $site ?>/single.php?info=<?php echo $row['video_url']; ?>"><?php echo substr($row['video_baslik'], 0,20); ?></a></h5>
+                                        <h5 class="vid-name"><a href="<?php echo $site ?>/single.php?info=<?php echo $row['video_url']; ?>">
+                                        <?php 
+                                        if (strlen($row['video_baslik']==16)) {
+                                            echo($row['video_baslik']);
+                                        }else {
+                                            echo (substr($row['video_baslik'], 0,16))."...";
+                                        }
+                                        ?>                                              
+
+                                            </a></h5>
                                         <div class="info">
                                             <h6>By <a href="#"><?php echo $row['video_sahibi']; ?></a></h6>
                                             <span><i class="fa fa-calendar"></i><?php echo $row['video_eklemetarihi']; ?></span>
