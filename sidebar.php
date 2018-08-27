@@ -1,4 +1,5 @@
 <div id="sidebar" class="col-md-4">
+
                 <!---- Start Widget Follow us ---->
                 <div class="widget wid-follow">
                     <div class="heading"><h4><i class="fa fa-users"></i> Bizi Takip Et!</h4></div>

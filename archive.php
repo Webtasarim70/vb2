@@ -37,7 +37,7 @@ require_once "header.php";
 				<article>
 						<a href="#"><h2 class="vid-name"><?php echo $row['video_baslik']; ?></h2></a>
 						<div class="info">
-							<h5>By <a href="#"><?php echo $row['video_sahibi']; ?></a></h5>
+							<h5>By <a href="<?php echo $site ?>/single.php?info=<?php echo $row['video_url']; ?>"><?php echo $row['video_sahibi']; ?></a></h5>
 							<span><i class="fa fa-calendar"></i> <?php echo $row['video_eklemetarihi']; ?></span> 
 									<?php 
 									$video=$row['video_id'];
@@ -140,7 +140,7 @@ require_once "header.php";
 		 if ($kategoricek->rowCount()) {                     
         		 foreach ($kategoricek as $row) {   ?>
 				<article>
-						<a href="#"><h2 class="vid-name"><?php echo $row['video_baslik']; ?></h2></a>
+						<a href="<?php echo $site ?>/single.php?info=<?php echo $row['video_url']; ?>"><h2 class="vid-name"><?php echo $row['video_baslik']; ?></h2></a>
 						<div class="info">
 							<h5>By <a href="#"><?php echo $row['video_sahibi']; ?></a></h5>
 							<span><i class="fa fa-calendar"></i> <?php echo $row['video_eklemetarihi']; ?></span> 
