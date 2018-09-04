@@ -10,7 +10,7 @@
 
                             <?php 
                             $videolar=$db->prepare("SELECT * FROM  videolar  INNER JOIN kategori ON 
-                        kategori.kategori_id=videolar.video_kat WHERE video_durum=:v ORDER BY video_eklemetarihi ASC LIMIT 3 ");
+                        kategori.kategori_id=videolar.video_kat WHERE video_durum=:v ORDER BY video_eklemetarihi DESC LIMIT 3 ");
                             $videolar->execute(array(':v'=>1));
                             if ($videolar->rowCount()) {
                                 foreach ($videolar as $row) {

@@ -70,7 +70,7 @@ require_once "ust.php";
                                     $url=post('videourl');
                                     $acik=$_POST['aciklama'];
                                     $etiket=post('etiket');
-                                    $tarih =date('d.M.Y h:i:s');
+                                    //$tarih =date('d.M.Y h:i:s');
                                     $kategori=post('kategori');
                                     $tavsiye=post('tavsiye');
 
@@ -96,7 +96,6 @@ require_once "ust.php";
                                     video_resim              =:r,
                                     video_url                =:u,
                                     video_aciklama           =:a,
-                                    video_eklemetarihi      =:t,
                                     video_goruntulenme       =:g,
                                     video_durum              =:d,
                                     video_etiketler          =:e,
@@ -104,7 +103,7 @@ require_once "ust.php";
                                     video_kat                =:kategori,
                                     video_sefetiketler       =:sefe 
                                       ');
-
+                                      // video_eklemetarihi      =:t,
                                      $videoekle->execute(array(
                                              ':s'           =>$sahibi,
                                              ':b'           =>$baslik,
@@ -112,7 +111,6 @@ require_once "ust.php";
                                              ':r'           =>$resim,
                                              ':u'           =>$url,
                                              ':a'           =>$acik,
-                                             ':t'           =>$tarih,
                                              ':g'           =>0,
                                              ':d'           =>1,
                                              ':e'           =>$etiket,
