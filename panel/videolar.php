@@ -52,7 +52,7 @@ require_once "ust.php";
                 if (!$q){
                     header('Location:index.php');
                 }else{
-                    $searchUrl="https://www.googleapis.com/youtube/v3/search?part=snippet&q=".$q."&type=video&key=".$apikey."&maxResults=10";
+                    $searchUrl="https://www.googleapis.com/youtube/v3/search?part=snippet&q=".$q."&type=video&key=".$apikey."&maxResults=25";
                     $response=file_get_contents($searchUrl);
                     $searchResponse=json_decode($response,true);
 

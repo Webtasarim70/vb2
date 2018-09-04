@@ -1,5 +1,19 @@
 <div id="sidebar" class="col-md-4">
 
+
+    <form action="archive.php?search=" method="get" class="form-inline">
+        <div class="input-group">
+            <input class="form-control" type="text" name="q" placeholder="Video Ara!">
+            <span class="input-group-btn">
+                <button class="btn btn-primary">
+                  <i class="fa fa-search"></i>
+                </button>
+              </span>
+        </div>
+    </form>
+    <div class="line"></div>
+
+
                 <!---- Start Widget Follow us ---->
                 <div class="widget wid-follow">
                     <div class="heading"><h4><i class="fa fa-users"></i> Bizi Takip Et!</h4></div>

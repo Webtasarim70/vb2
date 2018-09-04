@@ -84,7 +84,7 @@ require_once "ust.php"; ?>
                 <tr>
                     <td><?php echo $row['video_id'] ?></td>
                     <td><img src="<?php echo $row['video_resim'] ?>" width="100" height="100" /></td>
-                    <td><a target="_blank" data-toggle="tooltip" data-placement="top" title="Sitede İzle" href="<?php echo $site ?>/detay.php?info=<?php echo $row['video_url'] ?>"><?php echo $row['video_baslik'] ?></a></td>
+                    <td><a target="_blank" data-toggle="tooltip" data-placement="top" title="Sitede İzle" href="<?php echo $site ?>/single.php?info=<?php echo $row['video_url'] ?>"><?php echo $row['video_baslik'] ?></a></td>
 
                     <td><a target="_blank" data-toggle="tooltip" data-placement="top" title="Youtubede İzle" href="https://www.youtube.com/watch?v=<?php echo $row['video_url'] ?>"><?php echo $row['video_url'] ?></a></td>
                     <td><?php echo $row['video_sahibi'] ?></td>
@@ -128,50 +128,53 @@ require_once "ust.php"; ?>
                 echo "<div class='alert alert-danger'> Video Bulunmuyor </div>";
             }
 
-
-
-
-
-            #sayfalama kısmı
-                echo '<ul class="pagination justify-content-center">';
-                $ssayi = ceil($toplam/$lim);
-                $flim = 3;
-
-                if($ssayi < 2){
-                    null;
-                }else{
-
-                    if($s > 4){
-                        $onceki  = $s - 1;
-                        echo '<li class="page-item"><a class="page-link" href="'.$site.'/panel/index.php?s=1">�</a></li>';
-                        echo '<li class="page-item"><a class="page-link" href="'.$site.'/panel/index.php?s='.$onceki.'">></a></li>';
-                        //echo '...';
-
-                    }
-
-                    for($i = $s - $flim; $i < $s + $flim + 1; $i++){
-                        if($i > 0 && $i <= $ssayi){
-                            if($i == $s){
-                                echo '<li class="page-item"><a class="page-link" style="background:#337ab7;color:#fff" href="#">'.$i.'</a></li>';
-                            }else{
-
-                                echo '<li class="page-item"><a class="page-link" href="'.$site.'/panel/index.php?s='.$i.'">'.$i.'</a></li>';
-                            }
-                        }
-                    }
-
-                    if($s <= $ssayi - 4){
-                        $sonraki  = $s + 1;
-                        //echo '...';
-                        echo '<li class="page-item"><a  class="page-link" href="'.$site.'/panel/index.php?s='.$sonraki.'">></a></li>';
-                        echo '<li class="page-item"><a  class="page-link" href="'.$site.'/panel/index.php?s='.$ssayi.'">�</a></li>';
-                    }
-                }
-                echo '</ul>';
-
-               ?>
+            ?>
 
         </table>
+
+          <?php
+          #sayfalama kısmı
+          echo '<ul class="pagination justify-content-center">';
+          $ssayi = ceil($toplam/$lim);
+          $flim = 3;
+
+          if($ssayi < 2){
+              null;
+          }else{
+
+              if($s > 4){
+                  $onceki  = $s - 1;
+                  echo '<li class="page-item"><a class="page-link" href="'.$site.'/panel/index.php?s=1">�</a></li>';
+                  echo '<li class="page-item"><a class="page-link" href="'.$site.'/panel/index.php?s='.$onceki.'">></a></li>';
+                  //echo '...';
+
+              }
+
+              for($i = $s - $flim; $i < $s + $flim + 1; $i++){
+                  if($i > 0 && $i <= $ssayi){
+                      if($i == $s){
+                          echo '<li class="page-item"><a class="page-link" style="background:#337ab7;color:#fff" href="#">'.$i.'</a></li>';
+                      }else{
+
+                          echo '<li class="page-item"><a class="page-link" href="'.$site.'/panel/index.php?s='.$i.'">'.$i.'</a></li>';
+                      }
+                  }
+              }
+
+              if($s <= $ssayi - 4){
+                  $sonraki  = $s + 1;
+                  //echo '...';
+                  echo '<li class="page-item"><a  class="page-link" href="'.$site.'/panel/index.php?s='.$sonraki.'">></a></li>';
+                  echo '<li class="page-item"><a  class="page-link" href="'.$site.'/panel/index.php?s='.$ssayi.'">�</a></li>';
+              }
+          }
+          echo '</ul>';
+
+
+          ?>
+
+
+
       </div>
       </div>
       
