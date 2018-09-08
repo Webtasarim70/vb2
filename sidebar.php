@@ -1,9 +1,9 @@
 <div id="sidebar" class="col-md-4">
 
 
-    <form action="archive.php?search=" method="get" class="form-inline">
+    <form action="archive.php?=" method="get" class="form-inline">
         <div class="input-group">
-            <input class="form-control" type="text" name="q" placeholder="Video Ara!">
+            <input type="text" name="q" placeholder="Video Ara!">
             <span class="input-group-btn">
                 <button class="btn btn-primary">
                   <i class="fa fa-search"></i>
